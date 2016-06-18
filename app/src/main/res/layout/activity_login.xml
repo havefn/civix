@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
-        android:id="@+id/tf_email_register"
+        android:id="@+id/tf_email_login"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:textSize="20dp" />
@@ -24,32 +24,32 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/tf_password_register"
+        android:id="@+id/tf_password_login"
         android:textSize="20dp"
-        android:layout_below="@+id/tf_email_register"
+        android:layout_below="@+id/tf_email_login"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="LOGIN"
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_register"
         android:background="#ffffff"
-        android:layout_below="@+id/tf_password_register"
-        android:layout_alignLeft="@+id/tf_password_register"
-        android:layout_alignStart="@+id/tf_password_register"
+        android:layout_below="@+id/tf_password_login"
+        android:layout_alignLeft="@+id/tf_password_login"
+        android:layout_alignStart="@+id/tf_password_login"
         android:layout_marginTop="41dp"
-        android:layout_alignRight="@+id/tf_password_register"
-        android:layout_alignEnd="@+id/tf_password_register" />
+        android:layout_alignRight="@+id/tf_password_login"
+        android:layout_alignEnd="@+id/tf_password_login" />
 
     <com.google.android.gms.common.SignInButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_login"
-        android:layout_alignLeft="@+id/btn_login"
-        android:layout_alignStart="@+id/btn_login"
-        android:layout_alignRight="@+id/btn_login"
-        android:layout_alignEnd="@+id/btn_login"
+        android:layout_below="@+id/btn_register"
+        android:layout_alignLeft="@+id/btn_register"
+        android:layout_alignStart="@+id/btn_register"
+        android:layout_alignRight="@+id/btn_register"
+        android:layout_alignEnd="@+id/btn_register"
         android:id="@+id/btn_login_google"></com.google.android.gms.common.SignInButton>
 
 </RelativeLayout>

@@ -34,8 +34,6 @@ public class DataEntryActivity extends AppCompatActivity {
         User temp = new User(uid,name.getText().toString(),city.getText().toString(),description.getText().toString());
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
-
-        mDatabase.child("users").child(String.valueOf(uid)).setValue();
         Log.d("UserCreation","user" + uid + "creation success");
 
     }
