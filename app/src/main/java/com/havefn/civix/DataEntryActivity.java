@@ -3,9 +3,12 @@ package com.havefn.civix;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class DataEntryActivity extends AppCompatActivity {
@@ -14,7 +17,7 @@ public class DataEntryActivity extends AppCompatActivity {
     public EditText name;
     public EditText city;
     public EditText description;
-  //  private DatabaseReference mDatabase;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,10 @@ public class DataEntryActivity extends AppCompatActivity {
 
         User temp = new User(uid,name.getText().toString(),city.getText().toString(),description.getText().toString());
 
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        mDatabase.child("users").child(String.valueOf(uid)).setValue();
+        Log.d("UserCreation","user" + uid + "creation success");
 
     }
 }
