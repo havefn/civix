@@ -3,4 +3,35 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="blue0" nr="0" rgb="6DBDDB" r="109" g="189" b="219" r0="0.427" g0="0.741" b0="0.859">#6DBDDB</color>
+    <color name="blue1" nr="1" rgb="CFEEFA" r="207" g="238" b="250" r0="0.812" g0="0.933" b0="0.98">#CFEEFA</color>
+    <color name="blue2" nr="2" rgb="9AD6ED" r="154" g="214" b="237" r0="0.604" g0="0.839" b0="0.929">#9AD6ED</color>
+    <color name="blue3" nr="3" rgb="49A3C5" r="73" g="163" b="197" r0="0.286" g0="0.639" b0="0.773">#49A3C5</color>
+    <color name="blue4" nr="4" rgb="2A86A9" r="42" g="134" b="169" r0="0.165" g0="0.525" b0="0.663">#2A86A9</color>
+
+	<color name="white1" nr="0" rgb="FFFFFF" r="255" g="255" b="255" r0="1" g0="1" b0="1">#FFFFFF</color>
+	<color name="white2" nr="1" rgb="FFFFFF" r="255" g="255" b="255" r0="1" g0="1" b0="1">#FFFFFF</color>
+	<color name="white3" nr="2" rgb="FFFFFF" r="255" g="255" b="255" r0="1" g0="1" b0="1">#FFFFFF</color>
+	<color name="white4" nr="3" rgb="CECECE" r="206" g="206" b="206" r0="0.808" g0="0.808" b0="0.808">#CECECE</color>
+	<color name="white5" nr="4" rgb="A2A0A0" r="162" g="160" b="160" r0="0.635" g0="0.627" b0="0.627">#A2A0A0</color>
+
+	<color name="grey0" nr="0" rgb="D7DADB" r="215" g="218" b="219" r0="0.843" g0="0.855" b0="0.859">#D7DADB</color>
+	<color name="grey1" nr="1" rgb="FFFFFF" r="255" g="255" b="255" r0="1" g0="1" b0="1">#FFFFFF</color>
+	<color name="grey2" nr="2" rgb="FFFFFF" r="255" g="255" b="255" r0="1" g0="1" b0="1">#FFFFFF</color>
+	<color name="grey3" nr="3" rgb="A8B1B5" r="168" g="177" b="181" r0="0.659" g0="0.694" b0="0.71">#A8B1B5</color>
+	<color name="grey4" nr="4" rgb="7C8F95" r="124" g="143" b="149" r0="0.486" g0="0.561" b0="0.584">#7C8F95</color>
+
+	<color name="red0" nr="0" rgb="FC4348" r="252" g="67" b="72" r0="0.988" g0="0.263" b0="0.282">#FC4348</color>
+	<color name="red1" nr="1" rgb="FE9194" r="254" g="145" b="148" r0="0.996" g0="0.569" b0="0.58">#FE9194</color>
+	<color name="red2" nr="2" rgb="FD666A" r="253" g="102" b="106" r0="0.992" g0="0.4" b0="0.416">#FD666A</color>
+	<color name="red3" nr="3" rgb="EF141A" r="239" g="20" b="26" r0="0.937" g0="0.078" b0="0.102">#EF141A</color>
+	<color name="red4" nr="4" rgb="B7080C" r="183" g="8" b="12" r0="0.718" g0="0.031" b0="0.047">#B7080C</color>
+
+	<color name="black0" nr="0" rgb="2C3E50" r="44" g="62" b="80" r0="0.173" g0="0.243" b0="0.314">#2C3E50</color>
+	<color name="black1" nr="1" rgb="617487" r="97" g="116" b="135" r0="0.38" g0="0.455" b0="0.529">#617487</color>
+	<color name="black2" nr="2" rgb="42586E" r="66" g="88" b="110" r0="0.259" g0="0.345" b0="0.431">#42586E</color>
+	<color name="black3" nr="3" rgb="1B3147" r="27" g="49" b="71" r0="0.106" g0="0.192" b0="0.278">#1B3147</color>
+	<color name="black4" nr="4" rgb="0C2032" r="12" g="32" b="50" r0="0.047" g0="0.125" b0="0.196">#0C2032</color>
+
 </resources>
