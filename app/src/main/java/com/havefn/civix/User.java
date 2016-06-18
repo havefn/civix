@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class User {
@@ -16,13 +17,13 @@ public class User {
     public String city;
     public Uri imageUrl;
     public Date createdOn;
-    public HashMap<String,Boolean> ownedQuests;
-    public HashMap<String,Boolean> completedQuests;
-    public HashMap<String,Boolean> friends;
+    public Map<String,Object> ownedQuests;
+    public Map<String,Object> completedQuests;
+    public Map<String,Object> friends;
     public String description;
     public int point;
     public int appreciated;
-    public HashMap<String,Boolean> messageRoom;
+    public HashMap<String,Object> messageRoom;
     public String email;
 
     public User(String id, String name,String email ){
@@ -34,10 +35,10 @@ public class User {
         point = 0;
         Calendar c = Calendar.getInstance();
         createdOn = c.getTime();
-        ownedQuests = new HashMap<String,Boolean>();
-        completedQuests = new HashMap<String,Boolean>();
-        friends = new HashMap<String,Boolean>();
-        messageRoom =  new HashMap<String,Boolean>();
+        ownedQuests = new HashMap<String,Object>();
+        completedQuests = new HashMap<String,Object>();
+        friends = new HashMap<String,Object>();
+        messageRoom =  new HashMap<String,Object>();
     }
 
     public User(){}

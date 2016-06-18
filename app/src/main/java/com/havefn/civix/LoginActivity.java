@@ -23,8 +23,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 /**
  * Created by Cak on 18/06/2016.
@@ -38,6 +43,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private FirebaseAuth.AuthStateListener mAuthListener;
     protected Button btnLogin;
     protected EditText emailTF, passwordTF;
+    public User temp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -190,14 +196,32 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         String userId = acct.getId();
 
-        if (mDatabase.child("users").child(userId) != null) {
+
+        mDatabase.child("users").child(userId).addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // Get user value
+                        temp = dataSnapshot.getValue(User.class);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.w(TAG, "getUser:onCancelled", databaseError.toException());
+                    }
+                });
+
+        if (!(temp == null)) {
             Log.d(TAG,"User exist");
             return;
         }else{
             User newUser = new User(userId,acct.getDisplayName(),acct.getEmail());
             newUser.imageUrl = acct.getPhotoUrl();
+            newUser.completedQuests.put("mission impossible","a");
             mDatabase.child("users").child(userId).setValue(newUser);
-            Log.d(TAG, "Create new user" + userId);
+
+            Log.d(TAG,mDatabase.toString());
+            Log.d(TAG, "Create new user " + userId);
         }
     }
 }
