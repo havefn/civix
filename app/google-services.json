@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "205724612197-goj7o9ag1dk1pk5dg9o3v84g28cddvdi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.havefn.civix",
+            "certificate_hash": "A6958204412D77A1C929E3CDD71A6CFEFFDD6110"
+          }
+        },
+        {
           "client_id": "205724612197-cfdtltn9u9r5994ek5t0e03plcg87k3f.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

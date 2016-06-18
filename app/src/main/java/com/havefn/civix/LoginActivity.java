@@ -23,6 +23,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by Cak on 18/06/2016.
@@ -171,6 +173,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private void handleSignInResult(GoogleSignInResult result) {
         if (result.isSuccess()) {
             GoogleSignInAccount acct = result.getSignInAccount();
+            tryCreateNewUser(acct);
             Context context = getApplicationContext();
             btnLogin.setEnabled(false);
             signInButtonGoogle.setEnabled(false);
@@ -178,6 +181,23 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
+        }else{
+            Log.d(TAG,"login fail");
+        }
+    }
+
+    private void tryCreateNewUser(GoogleSignInAccount acct) {
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        String userId = acct.getId();
+
+        if (mDatabase.child("users").child(userId) != null) {
+            Log.d(TAG,"User exist");
+            return;
+        }else{
+            User newUser = new User(userId,acct.getDisplayName(),acct.getEmail());
+            newUser.imageUrl = acct.getPhotoUrl();
+            mDatabase.child("users").child(userId).setValue(newUser);
+            Log.d(TAG, "Create new user" + userId);
         }
     }
 }
