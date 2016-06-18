@@ -3,23 +3,24 @@ package com.havefn.civix;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 
 public class User {
 
-    public int id;
+    public String id;
     public int profilePicID;
     public String name;
     public String city;
     public Date createdOn;
-    public List<Quest> ownedQuest;
-    public List<Quest> completedQuest;
-    public List<Quest> friend;
+    public HashMap<String,Boolean> ownedQuests;
+    public HashMap<String,Boolean> completedQuests;
+    public HashMap<String,Boolean> friends;
     public String description;
     public int point;
     public int appreciated;
-    public List<MessageRoom> messages;
+    public HashMap<String,Boolean> messageRoom;
 
     public User(int id, String name, String city, String description ){
         this.name = name;
@@ -28,7 +29,10 @@ public class User {
         point = 0;
         Calendar c = Calendar.getInstance();
         createdOn = c.getTime();
-
+        ownedQuests = new HashMap<String,Boolean>();
+        completedQuests = new HashMap<String,Boolean>();
+        friends = new HashMap<String,Boolean>();
+        messageRoom =  new HashMap<String,Boolean>();
     }
 
     public User(){}

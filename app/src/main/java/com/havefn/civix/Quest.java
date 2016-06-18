@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -15,11 +16,11 @@ import java.util.List;
  */
 public class Quest {
 
-    public int creatorID;
+    public String creatorID;
     public String description;
     public int imageID;
     public Location questLocation;
-    public List<User> completedUser;
+    public HashMap<String,Boolean> completedUser;
     private boolean status;
     public Date createdDate;
     public Date endDate;
@@ -29,7 +30,7 @@ public class Quest {
 
     public static final String TAG = "QuestCreation";
 
-    public Quest(int creatorID, Location questLocation, Date endDateString,String category ) throws Exception{
+    public Quest(String torID, Location questLocation, Date endDateString,String category ) throws Exception{
         this.creatorID = creatorID;
         this.questLocation = questLocation;
         this.category = category;
@@ -44,10 +45,11 @@ public class Quest {
 
         Log.d(TAG,"Quest creation OK");
 
-        completedUser = new ArrayList<User>();
+        completedUser = new HashMap<String,Boolean>();
 
     }
 
+    public Quest(){}
 
 
     public void setStatus(boolean in) throws Exception{
@@ -77,14 +79,14 @@ public class Quest {
 
     public boolean userTryQuest(User user){
         if(validator.succeed()){
-            completedUser.add(user);
+            completedUser.put(user.id,true);
         }
        return validator.succeed();
     }
 
     public boolean userTryQuest(User user, String in){
         if(validator.succeed(in)){
-            completedUser.add(user);
+            completedUser.put(user.id,true);
         }
         return validator.succeed(in);
     }
