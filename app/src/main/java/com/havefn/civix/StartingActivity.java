@@ -15,13 +15,13 @@ public class StartingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_starting);
 
-        btnSignin = (Button) findViewById(R.id.btn_login);
+        btnSignin = (Button) findViewById(R.id.btn_to_register);
 
         btnSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                //startActivity(intent);
+                Intent intent = new Intent(StartingActivity.this, RegistrationActivity.class);
+                startActivity(intent);
             }
         });
     }
