@@ -52,8 +52,6 @@ public class RegistrationActivity extends AppCompatActivity {
                             .setPositiveButton(android.R.string.ok, null);
                     AlertDialog dialog = builder.create();
                     dialog.show();
-                    Toast.makeText(RegistrationActivity.this, "Empty",
-                            Toast.LENGTH_SHORT).show();
                 } else if (password.length() < 8) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegistrationActivity.this);
                     builder.setMessage(R.string.password_too_short)

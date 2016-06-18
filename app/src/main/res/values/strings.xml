@@ -8,7 +8,7 @@
     <string name="password_too_short">Your password must be more than 7 characters</string>
     <string name="register_error_title">Error!</string>
     <string name="register_success">Account successfully created! You can now Login.</string>
-    <string name="login_error_message">Please make sure you enter an email address and password!</string>
+    <string name="login_error_message">Please make sure you enter a correct email address and password!</string>
     <string name="login_error_title">Error!</string>
     <string name="login_button_label">Login</string>
     <string name="register_text">Sign Up!</string>
