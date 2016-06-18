@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * Created by Cak on 18/06/2016.
+ */
 public class StartingActivity extends AppCompatActivity {
 
     protected Button btnSignin;
