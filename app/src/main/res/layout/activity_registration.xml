@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
-        android:id="@+id/tf_email_login"
+        android:id="@+id/tf_email_register"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:textSize="20dp" />
@@ -24,9 +24,9 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/tf_password"
+        android:id="@+id/tf_password_register"
         android:textSize="20dp"
-        android:layout_below="@+id/tf_email_login"
+        android:layout_below="@+id/tf_email_register"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -35,11 +35,11 @@
         android:text="REGISTER"
         android:id="@+id/btn_login"
         android:background="#ffffff"
-        android:layout_below="@+id/tf_password"
-        android:layout_alignLeft="@+id/tf_password"
-        android:layout_alignStart="@+id/tf_password"
+        android:layout_below="@+id/tf_password_register"
+        android:layout_alignLeft="@+id/tf_password_register"
+        android:layout_alignStart="@+id/tf_password_register"
         android:layout_marginTop="41dp"
-        android:layout_alignRight="@+id/tf_password"
-        android:layout_alignEnd="@+id/tf_password" />
+        android:layout_alignRight="@+id/tf_password_register"
+        android:layout_alignEnd="@+id/tf_password_register" />
 
 </RelativeLayout>
