@@ -205,8 +205,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     Log.d(TAG, "User exist");
                     return;
                 } else {
-                    //Log.d(TAG, userExist + "ccd");
-                    mDatabase.child("wkwkwk").setValue("ckckck");
                     User newUser = new User(userId, acct.getDisplayName(), acct.getEmail());
                     newUser.imageUrl = acct.getPhotoUrl();
                     mDatabase.child("users").child(userId).setValue(newUser);
