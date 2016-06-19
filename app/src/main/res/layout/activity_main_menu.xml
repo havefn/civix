@@ -46,34 +46,14 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:weightSum="1">
+            android:weightSum="1"
+            android:id = "@+id/navBar_mainMenu">
 
-            <Button
-                android:layout_width="76dp"
-                android:layout_height="fill_parent"
-                android:text="Grab"
-                android:id="@+id/btnGrab"
-                android:layout_weight="0.25" />
 
-            <Button
-                android:layout_width="74dp"
-                android:layout_height="fill_parent"
-                android:text="New Button"
-                android:id="@+id/button2"
-                android:layout_weight="0.34" />
 
-            <Button
-                android:layout_width="65dp"
-                android:layout_height="match_parent"
-                android:text="New Button"
-                android:id="@+id/button3"
-                android:layout_weight="0.49" />
-
-            <Button
-                android:layout_width="84dp"
-                android:layout_height="match_parent"
-                android:text="New Button"
-                android:id="@+id/button4" />
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"></FrameLayout>
         </LinearLayout>
 
     </LinearLayout>

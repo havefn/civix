@@ -19,9 +19,16 @@
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".DataEntryActivity" />
         <activity android:name=".MainMenuActivity" />
-        <activity android:name=".Dummyu" android:exported="true"></activity>
+        <activity
+            android:name=".Dummyu"
+            android:exported="true" />
+
         <uses-permission android:name="android.permission.NFC" />
-        <uses-sdk android:minSdkVersion="10"/>
+
+        <uses-sdk android:minSdkVersion="10" />
+
+        <activity android:name=".NavBarActivity"
+                android:exported="true"></activity>
     </application>
 
 </manifest>
