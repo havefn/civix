@@ -17,6 +17,7 @@ import java.util.List;
 public class Quest {
 
     public String creatorID;
+    public String title;
     public String description;
     public int imageID;
     public Location questLocation;
@@ -30,18 +31,13 @@ public class Quest {
 
     public static final String TAG = "QuestCreation";
 
-    public Quest(String torID, Location questLocation, Date endDateString,String category ) throws Exception{
+    public Quest(String creatorID, Location questLocation ,String title ){
+        this.title = title;
         this.creatorID = creatorID;
         this.questLocation = questLocation;
         this.category = category;
         Calendar c = Calendar.getInstance();
         createdDate = c.getTime();
-
-        if(isDateOK(endDate)){
-            this.endDate = endDate;
-        }else{
-            throw new Exception ("End date > cuurent date");
-        }
 
         Log.d(TAG,"Quest creation OK");
 
