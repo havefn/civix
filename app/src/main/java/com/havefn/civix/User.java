@@ -36,6 +36,8 @@ public class User {
         Calendar c = Calendar.getInstance();
         createdOn = c.getTime();
         ownedQuests = new HashMap<String,Object>();
+        ownedQuests.put("haha", "123");
+        ownedQuests.put("ckck", "ccdlufa");
         completedQuests = new HashMap<String,Object>();
         friends = new HashMap<String,Object>();
         messageRoom =  new HashMap<String,Object>();

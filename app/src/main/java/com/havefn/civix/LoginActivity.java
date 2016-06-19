@@ -188,6 +188,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+           // parse data using intent
+            intent.putExtra("userId",acct.getId());
             startActivity(intent);
         } else {
             Log.d(TAG, "login fail");

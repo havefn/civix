@@ -31,6 +31,15 @@
                 android:layout_gravity="center_horizontal|top"
                 android:src="@drawable/abc_btn_radio_to_on_mtrl_015" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/tv_view"
+                android:layout_gravity="center"
+                android:textSize="60dp" />
+
         </FrameLayout>
 
         <LinearLayout
@@ -42,8 +51,8 @@
             <Button
                 android:layout_width="76dp"
                 android:layout_height="fill_parent"
-                android:text="New Button"
-                android:id="@+id/button"
+                android:text="Grab"
+                android:id="@+id/btnGrab"
                 android:layout_weight="0.25" />
 
             <Button
