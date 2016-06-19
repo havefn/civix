@@ -20,6 +20,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,15 +42,16 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private static final int RC_SIGN_IN = 9001;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference mDatabase;
     protected Button btnLogin;
     protected EditText emailTF, passwordTF;
-    public User temp;
+    GoogleSignInAccount acct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         //firebase
         mAuth = FirebaseAuth.getInstance();
 //        mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -68,7 +70,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 //        };
         emailTF = (EditText) findViewById(R.id.tf_email_login);
         passwordTF = (EditText) findViewById(R.id.tf_email_login);
-        btnLogin = (Button)  findViewById(R.id.btn_login);
+        btnLogin = (Button) findViewById(R.id.btn_login);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,7 +137,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_login_google :
+            case R.id.btn_login_google:
                 signIn();
                 break;
         }
@@ -144,7 +146,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     @Override
     public void onStart() {
         super.onStart();
-       // mAuth.addAuthStateListener(mAuthListener);
+        // mAuth.addAuthStateListener(mAuthListener);
     }
 
     @Override
@@ -163,7 +165,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == RC_SIGN_IN) {
+        if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(result);
         }
@@ -178,8 +180,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     private void handleSignInResult(GoogleSignInResult result) {
         if (result.isSuccess()) {
-            GoogleSignInAccount acct = result.getSignInAccount();
-            tryCreateNewUser(acct);
+            acct = result.getSignInAccount();
+            tryCreateNewUser();
             Context context = getApplicationContext();
             btnLogin.setEnabled(false);
             signInButtonGoogle.setEnabled(false);
@@ -187,41 +189,38 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
-        }else{
-            Log.d(TAG,"login fail");
+        } else {
+            Log.d(TAG, "login fail");
         }
     }
 
-    private void tryCreateNewUser(GoogleSignInAccount acct) {
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-        String userId = acct.getId();
+    private void tryCreateNewUser() {
+        mDatabase.child("users").child(acct.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get user value
+                User temp = dataSnapshot.getValue(User.class);
+                String userId = acct.getId();
+                if (dataSnapshot.exists()) {
+                    Log.d(TAG, "User exist");
+                    return;
+                } else {
+                    //Log.d(TAG, userExist + "ccd");
+                    mDatabase.child("wkwkwk").setValue("ckckck");
+                    User newUser = new User(userId, acct.getDisplayName(), acct.getEmail());
+                    newUser.imageUrl = acct.getPhotoUrl();
+                    mDatabase.child("users").child(userId).setValue(newUser);
+                    Log.d(TAG, "Create new user " + userId);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "getUser:onCancelled", databaseError.toException());
+            }
+        });
 
 
-        mDatabase.child("users").child(userId).addListenerForSingleValueEvent(
-                new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        // Get user value
-                        temp = dataSnapshot.getValue(User.class);
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        Log.w(TAG, "getUser:onCancelled", databaseError.toException());
-                    }
-                });
-
-        if (!(temp == null)) {
-            Log.d(TAG,"User exist");
-            return;
-        }else{
-            User newUser = new User(userId,acct.getDisplayName(),acct.getEmail());
-            newUser.imageUrl = acct.getPhotoUrl();
-            newUser.completedQuests.put("mission impossible","a");
-            mDatabase.child("users").child(userId).setValue(newUser);
-
-            Log.d(TAG,mDatabase.toString());
-            Log.d(TAG, "Create new user " + userId);
-        }
     }
+
 }
