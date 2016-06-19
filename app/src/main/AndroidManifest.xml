@@ -19,7 +19,7 @@
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".DataEntryActivity" />
         <activity android:name=".MainMenuActivity" />
-        <activity android:name=".Dummyu"></activity>
+        <activity android:name=".Dummyu" android:exported="true"></activity>
     </application>
 
 </manifest>
