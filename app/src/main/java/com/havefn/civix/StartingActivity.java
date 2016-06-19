@@ -24,7 +24,7 @@ public class StartingActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StartingActivity.this, RegistrationActivity.class);
+                Intent intent = new Intent(StartingActivity.this, NFCValidationActivity.class);
                 startActivity(intent);
             }
         });

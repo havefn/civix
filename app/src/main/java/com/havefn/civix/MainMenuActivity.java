@@ -31,7 +31,6 @@ public class MainMenuActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         String userId = i.getStringExtra("userId");
-        Log.d("aufa","sial " + userId);
 
         DatabaseReference mRoot = FirebaseDatabase.getInstance().getReference();
         DatabaseReference mCurrentUser =  mRoot.child("users").child(userId).getRef();
