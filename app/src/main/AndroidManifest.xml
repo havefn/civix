@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.havefn.civix">
 
+    <uses-permission android:name="android.permission.NFC" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,9 +20,14 @@
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".DataEntryActivity" />
         <activity android:name=".MainMenuActivity" />
-        <activity android:name=".Dummyu" android:exported="true"></activity>
+        <activity
+            android:name=".Dummyu"
+            android:exported="true" />
+
         <uses-permission android:name="android.permission.NFC" />
-        <uses-sdk android:minSdkVersion="10"/>
+        <uses-sdk android:minSdkVersion="14" />
+        <uses-feature android:name="android.hardware.nfc" android:required="false"/>
+        <activity android:name=".NFCValidationActivity"></activity>
     </application>
 
 </manifest>
