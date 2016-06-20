@@ -3,10 +3,13 @@ package com.havefn.civix;
 import android.*;
 import android.Manifest;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.IntentSender;
 import android.content.IntentSender.SendIntentException;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.provider.Settings;
+import android.provider.Settings.Global;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -33,6 +36,7 @@ import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -114,15 +118,27 @@ public class MapsActivity extends AppCompatActivity implements
                 .title("Ottawa")
                 .snippet("Not Montreal"));
 
+        //Todo: make marker for every available quest
+        //setSnippet("<questID>")
+        Global.mRoot.child("quest").add(valueListener(
 
+        ))
 
         mGoogleMap.setOnInfoWindowClickListener((OnInfoWindowClickListener) this);
+        mGoogleMap.setOnMarkerClickListener((OnMarkerClickListener) this);
     }
 
     @Override
     public void onInfoWindowClick(Marker marker) {
         Toast.makeText(this, marker.getSnippet(),
                 Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onMarkerClick(Marker marker){
+        Intent  intent = new Intent(this, QuestActivity.class);
+
+        startActivity(intent);
     }
 
     protected synchronized void buildGoogleApiClient() {

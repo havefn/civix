@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/map_item"
+        android:title="Maps"
+        />
+    <item
+        android:id="@+id/quest_item"
+        android:title="Quest" />
+    <item
+        android:id="@+id/userDashboard_item"
+        android:title="Dashboard" />
+    <item
+        android:id="@+id/search_item"
+        android:title="Search" />
+
+</menu>

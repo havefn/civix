@@ -18,6 +18,7 @@ public class User {
     public Uri imageUrl;
     public Date createdOn;
     public Map<String,Object> ownedQuests;
+    public Map<String,Object> takenQuests;
     public Map<String,Object> completedQuests;
     public Map<String,Object> friends;
     public String description;
