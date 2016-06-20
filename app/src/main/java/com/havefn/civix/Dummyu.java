@@ -34,11 +34,5 @@ public class Dummyu extends AppCompatActivity {
 
              }
          });
-        Location temp = new Location("temp");
-        temp.setLatitude(-6);
-        temp.setLongitude(106);
-        Quest dummy = new Quest("Aufa", temp, "questPercobaan");
-        mRoot.child("quests").push().setValue(dummy);
-
     }
 }

@@ -6,13 +6,14 @@ import java.util.List;
 /**
  * Created by Aufa 19/06/2016.
  */
+
+//untuk sementara ini, kelas ini hanya dikhususkan untuk NFCQuestProgression :( -aufa
 public class QuestProgression {
     private Boolean complete;
-    List<Boolean> checkList;
-    int currentCount;
-    int targetCount;
-    String type;
-
+    private List<Boolean> checkList;
+    private int currentCount;
+    private int targetCount;
+    private String type;
 
     public QuestProgression (String type, int targetCount){
         checkList = new ArrayList<Boolean>();
@@ -44,7 +45,5 @@ public class QuestProgression {
             return false;
         }
     }
-
-
 
 }

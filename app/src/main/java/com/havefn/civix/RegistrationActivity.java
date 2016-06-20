@@ -71,7 +71,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                     // signed in user can be handled in the listener.
                                     if (!task.isSuccessful()) {
                                         AlertDialog.Builder builder = new AlertDialog.Builder(RegistrationActivity.this);
-                                        builder.setMessage("USER UDAH ADA -- DATABASE_ERRORnya ga ngerti gue")
+                                        builder.setMessage(R.string.register_error_message_userexist)
                                                 .setTitle(R.string.register_error_title)
                                                 .setPositiveButton(android.R.string.ok, null);
                                         AlertDialog dialog = builder.create();
@@ -94,7 +94,6 @@ public class RegistrationActivity extends AppCompatActivity {
                                     }
                                 }
                             });
-
                 }
             }
         });
