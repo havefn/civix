@@ -20,16 +20,16 @@ public class User {
     private Uri imageUrl;
     private Date createdOn;
     private List<String> ownedQuests;
-    private Map<String,Object> takenQuests;
-    private Map<String,Object> completedQuests;
-    private Map<String,Object> friends;
+    private Map<String,QuestProgression> takenQuests;
+    private Map<String,QuestProgression> completedQuests;
+    private Map<String,String> friends;
     private String description;
     private int point;
     private int appreciated;
-    private HashMap<String,Object> messageRoom;
+    //private HashMap<String,Msg> messageRoom;
     private String email;
 
-    public User(String id, String name,String email ){
+    public User(String id, String name, String email){
         this.id = id;
         this.name = name;
         this.city = city;
@@ -39,10 +39,10 @@ public class User {
         Calendar c = Calendar.getInstance();
         createdOn = c.getTime();
         ownedQuests = new ArrayList<String>();
-        completedQuests = new HashMap<String,Object>();
-        friends = new HashMap<String,Object>();
-        messageRoom =  new HashMap<String,Object>();
-
+        completedQuests = new HashMap<String,QuestProgression>();
+        takenQuests = new HashMap<String,QuestProgression>();
+        friends = new HashMap<String,String>();
+        //messageRoom =  new HashMap<String,Object>();
         Global.mRoot.child("users").child(id).setValue(this);
     }
 
@@ -107,29 +107,29 @@ public class User {
         Global.mRoot.child("users").child(id).setValue(this);
     }
 
-    public Map<String, Object> getTakenQuests() {
+    public Map<String, QuestProgression> getTakenQuests() {
         return takenQuests;
     }
 
-    public void setTakenQuests(Map<String, Object> takenQuests) {
+    public void setTakenQuests(Map<String, QuestProgression> takenQuests) {
         this.takenQuests = takenQuests;
         Global.mRoot.child("users").child(id).setValue(this);
     }
 
-    public Map<String, Object> getCompletedQuests() {
+    public Map<String, QuestProgression> getCompletedQuests() {
         return completedQuests;
     }
 
-    public void setCompletedQuests(Map<String, Object> completedQuests) {
+    public void setCompletedQuests(Map<String, QuestProgression> completedQuests) {
         this.completedQuests = completedQuests;
         Global.mRoot.child("users").child(id).setValue(this);
     }
 
-    public Map<String, Object> getFriends() {
+    public Map<String, String> getFriends() {
         return friends;
     }
 
-    public void setFriends(Map<String, Object> friends) {
+    public void setFriends(Map<String, String> friends) {
         this.friends = friends;
         Global.mRoot.child("users").child(id).setValue(this);
     }
@@ -162,14 +162,14 @@ public class User {
         Global.mRoot.child("users").child(id).setValue(this);
     }
 
-    public HashMap<String, Object> getMessageRoom() {
-        return messageRoom;
-    }
+//    public HashMap<String, Object> getMessageRoom() {
+//        return messageRoom;
+//    }
 
-    public void setMessageRoom(HashMap<String, Object> messageRoom) {
-        this.messageRoom = messageRoom;
-        Global.mRoot.child("users").child(id).setValue(this);
-    }
+//    public void setMessageRoom(HashMap<String, Object> messageRoom) {
+//        this.messageRoom = messageRoom;
+//        Global.mRoot.child("users").child(id).setValue(this);
+//    }
 
     public String getEmail() {
         return email;
@@ -177,6 +177,10 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+        Global.mRoot.child("users").child(id).setValue(this);
+    }
+
+    public void updateDatabase() {
         Global.mRoot.child("users").child(id).setValue(this);
     }
 }

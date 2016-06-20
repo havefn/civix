@@ -23,12 +23,13 @@ import java.util.Arrays;
 public class NFCValidationActivity extends AppCompatActivity {
 
     private static final String TAG = "NFCActivity";
+    private static final boolean NFCALLOWED = true;
     private NfcAdapter nfcAdapter;
     private byte[] tagId;
     private Quest currentQuest;
-    private String userId;
+    private User currentUser;
     private String questId;
-    private QuestProgression takenQuestProgression;
+    QuestProgression takenQuestProgression;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,55 +37,65 @@ public class NFCValidationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_nfcvalidation);
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        if(nfcAdapter != null && nfcAdapter.isEnabled()) {
+        if (nfcAdapter != null && nfcAdapter.isEnabled()) {
             Log.d(TAG, "NFC exist!!");
         } else {
             Log.d(TAG, "NFC not Available!!");
         }
+        if (NFCALLOWED) {
+            Intent intent = getIntent();
+            final String currentUserId = intent.getStringExtra("currentUserId").toString();
+            questId = intent.getStringExtra("questId").toString();
+            Global.mRoot.child("users").child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    currentUser = dataSnapshot.getValue(User.class);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+            Global.mRoot.child("quests").child(questId).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    currentQuest = (NFCQuest) dataSnapshot.getValue();
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
 
     @Override
-    protected void onNewIntent(Intent intent)  {
+    protected void onNewIntent(Intent intent) {
         //Toast.makeText(this, "NFC Intent Received!", Toast.LENGTH_LONG).show();
         Tag targetTag = (Tag) intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
         tagId = targetTag.getId();
-        userId = intent.getStringExtra("currentUserId").toString();
 
         Log.d(TAG, "NFC received " + Arrays.toString(tagId));
-        // TODO: 19/06/2016 ini idnya udah direceive, disini ditambah untuk mensinkronasi data di quest user
-       questId =  intent.getStringExtra("questId");
-         Global.mRoot.child("quests").child(questId).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                currentQuest = (NFCQuest) dataSnapshot.getValue();
+        if (NFCALLOWED) {
+            takenQuestProgression = currentUser.getTakenQuests().get(questId);
+            int temp = takenQuestProgression.getCurrentCount();
+            takenQuestProgression.setCurrentCount(++temp);
+            currentUser.setTakenQuests(currentUser.getTakenQuests());
+
+            ArrayList<String> nfcIds = (ArrayList) ((NFCQuest) currentQuest).getNfcID();
+
+            if (nfcIds.contains(tagId.toString())) {
+                temp = takenQuestProgression.getCurrentCount();
+                takenQuestProgression.setCurrentCount(++temp);
             }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
+            if (takenQuestProgression.isComplete()) {
+                Log.d(TAG, "Quest complete");
             }
-        });
-
-        Global.mRoot.child("users").child(userId).child("takenQuest").child(questId).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-    public void onDataChange(DataSnapshot dataSnapshot) {
-        takenQuestProgression = (QuestProgression) dataSnapshot.getValue();
-    }
-
-    @Override
-    public void onCancelled(DatabaseError databaseError) {
-
-    }
-});
-
-        ArrayList<String> nfcIds = (ArrayList) ((NFCQuest) currentQuest).getNfcID();
-
-        if(nfcIds.contains(tagId.toString())){
-            
         }
-
         super.onNewIntent(intent);
-
     }
 
     @Override

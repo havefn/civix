@@ -19,8 +19,6 @@ public class QuestProgression {
 
     public QuestProgression (String type, int targetCount, String userId, String questId){
         checkList = new ArrayList<Boolean>();
-        currentCount = 0;
-        this.targetCount = targetCount;
         this.type = type;
         this.userId = userId;
         this.questId = questId;
@@ -28,26 +26,13 @@ public class QuestProgression {
     }
 
     public Boolean isComplete(){
-        if(type.equals("cl")){
-            Boolean temp = true;
 
-            for(Boolean e : checkList){
-                temp = temp && e;
-                if(temp.equals(false)){
-                    break;
-                }
-            }
-
-            return temp;
-        }else if(type.equals("co")){
             if(currentCount == targetCount){
                 return true;
             }else{
                 return false;
             }
-        }else{
-            return false;
-        }
+
     }
 
     public void setComplete(Boolean complete) {

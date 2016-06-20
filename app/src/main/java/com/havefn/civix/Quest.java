@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by aufa on 18/06/2016.
  */
-public abstract class Quest {
+public class Quest {
 
     private String creatorID;
     private String title;
@@ -40,6 +40,7 @@ public abstract class Quest {
         this.endDate = endDate;
         this.description = description;
         this.progressionType = type;
+        Global.mRoot.child("quests").child(questId).setValue(this);
 
         if(isDateOK(endDate)){
             this.endDate = endDate;
@@ -48,6 +49,20 @@ public abstract class Quest {
         }
         Log.d(TAG,"Quest creation OK");
         completedUser = new HashMap<String,Boolean>();
+    }
+
+    public Quest(String creatorID, Location questLocation ,String title, String description, String imageID, String type) throws Exception {
+        this.title = title;
+        this.creatorID = creatorID;
+        this.questLocation = questLocation;
+        Calendar c = Calendar.getInstance();
+        createdDate = c.getTime();
+        this.imageID = imageID;
+        this.endDate = endDate;
+        this.description = description;
+        this.progressionType = type;
+        completedUser = new HashMap<String,Boolean>();
+        Global.mRoot.child("quests").child(questId).setValue(this);
     }
 
 
