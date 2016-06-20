@@ -209,7 +209,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     return;
                 } else {
                     User newUser = new User(userId, acct.getDisplayName(), acct.getEmail());
-                    newUser.imageUrl = acct.getPhotoUrl();
+                    newUser.setImageUrl(acct.getPhotoUrl());
                     mDatabase.child("users").child(userId).setValue(newUser);
                     Log.d(TAG, "Create new user " + userId);
                 }
