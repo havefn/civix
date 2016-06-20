@@ -41,8 +41,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9001;
     private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    private DatabaseReference mDatabase;
     protected Button btnLogin;
     protected EditText emailTF, passwordTF;
     GoogleSignInAccount acct;
@@ -51,7 +49,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        mDatabase = FirebaseDatabase.getInstance().getReference();
         //firebase
         mAuth = FirebaseAuth.getInstance();
 //        mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -198,7 +195,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
     private void tryCreateNewUser() {
-        mDatabase.child("users").child(acct.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
+        Global.mRoot.child("users").child(acct.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get user value
@@ -210,7 +207,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 } else {
                     User newUser = new User(userId, acct.getDisplayName(), acct.getEmail());
                     newUser.setImageUrl(acct.getPhotoUrl());
-                    mDatabase.child("users").child(userId).setValue(newUser);
                     Log.d(TAG, "Create new user " + userId);
                 }
             }

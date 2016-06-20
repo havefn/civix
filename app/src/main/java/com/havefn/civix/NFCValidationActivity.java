@@ -80,7 +80,7 @@ public class NFCValidationActivity extends AppCompatActivity {
         ArrayList<String> nfcIds = (ArrayList) ((NFCQuest) currentQuest).getNfcID();
 
         if(nfcIds.contains(tagId.toString())){
-            takenQuestProgression.currentCount++;
+            
         }
 
         super.onNewIntent(intent);
