@@ -59,7 +59,7 @@ public abstract class Quest {
         }else{
             this.complete = in;
         }
-        Global.mRoot.child("quests").child(questId).setValue(this);
+        Global.mRoot.child("rootDB").child(questId).setValue(this);
     }
 
     public boolean getStatus(){
@@ -82,7 +82,7 @@ public abstract class Quest {
 
     public void setCreatorID(String creatorID) {
         this.creatorID = creatorID;
-        Global.mRoot.child("quests").child(questId).setValue(this);
+        Global.mRoot.child("rootDB").child(questId).setValue(this);
     }
 
     public String getTitle() {
@@ -91,7 +91,7 @@ public abstract class Quest {
 
     public void setTitle(String title) {
         this.title = title;
-        Global.mRoot.child("quests").child(questId).setValue(this);
+        Global.mRoot.child("rootDB").child(questId).setValue(this);
     }
 
     public String getDescription() {
@@ -100,7 +100,7 @@ public abstract class Quest {
 
     public void setDescription(String description) {
         this.description = description;
-        Global.mRoot.child("quests").child(questId).setValue(this);
+        Global.mRoot.child("rootDB").child(questId).setValue(this);
     }
 
     public String getImageID() {
@@ -109,7 +109,7 @@ public abstract class Quest {
 
     public void setImageID(String imageID) {
         this.imageID = imageID;
-        Global.mRoot.child("quests").child(questId).setValue(this);
+        Global.mRoot.child("rootDB").child(questId).setValue(this);
     }
 
     public Location getQuestLocation() {
@@ -118,7 +118,7 @@ public abstract class Quest {
 
     public void setQuestLocation(Location questLocation) {
         this.questLocation = questLocation;
-        Global.mRoot.child("quests").child(questId).setValue(this);
+        Global.mRoot.child("rootDB").child(questId).setValue(this);
     }
 
     public HashMap<String, Boolean> getCompletedUser() {
@@ -127,7 +127,7 @@ public abstract class Quest {
 
     public void setCompletedUser(HashMap<String, Boolean> completedUser) {
         this.completedUser = completedUser;
-        Global.mRoot.child("quests").child(questId).setValue(this);
+        Global.mRoot.child("rootDB").child(questId).setValue(this);
     }
 
     public boolean isComplete() {
@@ -136,7 +136,7 @@ public abstract class Quest {
 
     public void setComplete(boolean complete) {
         this.complete = complete;
-        Global.mRoot.child("quests").child(questId).setValue(this);
+        Global.mRoot.child("rootDB").child(questId).setValue(this);
     }
 
     public Date getCreatedDate() {
@@ -145,7 +145,7 @@ public abstract class Quest {
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
-        Global.mRoot.child("quests").child(questId).setValue(this);
+        Global.mRoot.child("rootDB").child(questId).setValue(this);
     }
 
     public Date getEndDate() {
@@ -154,7 +154,7 @@ public abstract class Quest {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
-        Global.mRoot.child("quests").child(questId).setValue(this);
+        Global.mRoot.child("rootDB").child(questId).setValue(this);
     }
 
     public String getProgressionType() {
@@ -163,7 +163,7 @@ public abstract class Quest {
 
     public void setProgressionType(String progressionType) {
         this.progressionType = progressionType;
-        Global.mRoot.child("quests").child(questId).setValue(this);
+        Global.mRoot.child("rootDB").child(questId).setValue(this);
     }
 
     public String getQuestId() {
@@ -172,7 +172,7 @@ public abstract class Quest {
 
     public void setQuestId(String questId) {
         this.questId = questId;
-        Global.mRoot.child("quests").child(questId).setValue(this);
+        Global.mRoot.child("rootDB").child(questId).setValue(this);
     }
 
     public static String getTAG() {

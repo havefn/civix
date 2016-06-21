@@ -11,7 +11,7 @@ import java.util.List;
 public class QuestProgression {
     private Boolean complete;
     private List<Boolean> checkList;
-    private int currentCount;
+    public int currentCount;
     private int targetCount;
     private String type;
 

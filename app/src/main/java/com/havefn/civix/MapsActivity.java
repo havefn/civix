@@ -1,19 +1,11 @@
 package com.havefn.civix;
 
-import android.*;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.IntentSender;
-import android.content.IntentSender.SendIntentException;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.provider.Settings;
-import android.provider.Settings.Global;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -22,35 +14,24 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
-import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.LocationSettingsResult;
-import com.google.android.gms.location.LocationSettingsStates;
-import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
-import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
-import java.text.BreakIterator;
-import java.text.DateFormat;
-
-import static com.google.android.gms.common.api.GoogleApiClient.*;
-import static java.lang.System.exit;
-import static java.lang.System.nanoTime;
+import java.util.Iterator;
+import java.util.Map;
 
 public class MapsActivity extends AppCompatActivity implements
         OnMapReadyCallback,
@@ -67,6 +48,8 @@ public class MapsActivity extends AppCompatActivity implements
     SupportMapFragment mFragment;
     Marker currLocationMarker;
     final Activity act = this;
+    public RootDB rootDB;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,23 +103,48 @@ public class MapsActivity extends AppCompatActivity implements
 
         //Todo: make marker for every available quest
         //setSnippet("<questID>")
-        Global.mRoot.child("quest").add(valueListener(
 
-        ))
+        com.havefn.civix.Global.mRoot.child("rootDB").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                rootDB = dataSnapshot.getValue(RootDB.class);
+                Log.d("aufa",""+rootDB.quests.size());
+                Iterator it = rootDB.quests.entrySet().iterator();
+                while (it.hasNext()) {
+                    Map.Entry pair = (Map.Entry)it.next();
+                    //Toast.makeText(act,String.valueOf(pair.getValue().getClass()),Toast.LENGTH_SHORT).show();
+                    Quest quest = (Quest) pair.getValue();
+                    LatLng loc = new LatLng(quest.getQuestLocation().getLatitude(),quest.getQuestLocation().getLongitude());
+                    Toast.makeText(act,String.valueOf(quest.getQuestLocation().getLatitude()),Toast.LENGTH_SHORT).show();
+                    mGoogleMap.addMarker(new MarkerOptions()
+                            .position(loc)
+                            .title(quest.getTitle())
+                            .snippet(quest.getQuestId()));
+
+                    it.remove(); // avoids a ConcurrentModificationException
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(act, "Database Error",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        //Toast.makeText(act,String.valueOf(rootDB.size()),Toast.LENGTH_SHORT).show();
+        //Quest q = (Quest) rootDB.get("-KKbs_S6MBBstHeU5LLr");
+
+        //Toast.makeText(act,q.getTitle(),Toast.LENGTH_SHORT).show();
+
 
         mGoogleMap.setOnInfoWindowClickListener((OnInfoWindowClickListener) this);
-        mGoogleMap.setOnMarkerClickListener((OnMarkerClickListener) this);
     }
 
     @Override
     public void onInfoWindowClick(Marker marker) {
-        Toast.makeText(this, marker.getSnippet(),
+        Toast.makeText(this, marker.getTitle(),
                 Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onMarkerClick(Marker marker){
-        Intent  intent = new Intent(this, QuestActivity.class);
+        Intent intent = new Intent(this, QuestActivity.class);
 
         startActivity(intent);
     }

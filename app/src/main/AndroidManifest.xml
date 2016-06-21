@@ -3,30 +3,19 @@
     package="com.havefn.civix">
 
     <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature android:name="android.hardware.nfc" android:required="false"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StartingActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-<!--
-         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
-         Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality.
-    -->
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-<uses-permission android:name="android.permission.NFC" />
-<application android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name"
-    android:supportsRtl="true" android:theme="@style/AppTheme">
-    <activity android:name=".StartingActivity">
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/google_maps_key" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".StartingActivity"/>
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".DataEntryActivity" />
@@ -34,42 +23,16 @@
         <activity
             android:name=".Dummyu"
             android:exported="true" />
-        <activity android:name=".NavBarActivity"
-            android:exported="true"></activity>
-        <uses-permission android:name="android.permission.NFC" />
-        <uses-sdk android:minSdkVersion="14" />
-        <uses-feature android:name="android.hardware.nfc" android:required="false"/>
-        <activity android:name=".NFCValidationActivity"></activity>
+        <activity android:name=".NFCValidationActivity"/>
+        <activity android:name="com.havefn.civix.QuestActivity"/>
+
+        <activity android:name=".MapsActivity" android:label="@string/title_activity_maps">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
-    </activity>
-    <activity android:name=".LoginActivity" />
-    <activity android:name=".RegistrationActivity" />
-    <activity android:name=".DataEntryActivity" />
-    <activity android:name=".MainMenuActivity" />
-    <activity android:name=".Dummyu" android:exported="true" />
-    <activity android:name="com.havefn.civix.QuestActivity"></activity>
-    <uses-permission android:name="android.permission.NFC" />
-    <uses-sdk android:minSdkVersion="14" />
-    <uses-feature android:name="android.hardware.nfc" android:required="false" />
-    <activity android:name=".NFCValidationActivity"></activity>
-    <!--
-            The API key for Google Maps-based APIs is defined as a string resource.
-        (See the file "res/values/google_maps_api.xml").
-        Note that the API key is linked to the encryption key used to sign the APK.
-        You need a different API key for each encryption key, including the release key that is used to
-        sign the APK for publishing.
-        You can define the keys for the debug and release targets in src/debug/ and src/release/.
-        -->
-    <meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/google_maps_key" />
-
-    <activity android:name=".MapsActivity" android:label="@string/title_activity_maps">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-
-    </activity>
-</application>
 
 </manifest>

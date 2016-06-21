@@ -53,7 +53,7 @@ public class NFCValidationActivity extends AppCompatActivity {
         Log.d(TAG, "NFC received " + Arrays.toString(tagId));
         // TODO: 19/06/2016 ini idnya udah direceive, disini ditambah untuk mensinkronasi data di quest user
        questId =  intent.getStringExtra("questId");
-         Global.mRoot.child("quests").child(questId).addListenerForSingleValueEvent(new ValueEventListener() {
+         Global.mRoot.child("rootDB").child(questId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 currentQuest = (NFCQuest) dataSnapshot.getValue();

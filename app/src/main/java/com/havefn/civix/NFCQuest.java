@@ -18,8 +18,8 @@ public class NFCQuest extends Quest {
         super(creatorID, questLocation , title, description, endDate, imageID, type);
         ArrayList<String> nfcID = new ArrayList<String>();
 
-        super.setQuestId(Global.mRoot.child("quests").push().getKey());
-        Global.mRoot.child("quests").child(super.getQuestId()).setValue(this);
+        super.setQuestId(Global.mRoot.child("rootDB").push().getKey());
+        Global.mRoot.child("rootDB").child(super.getQuestId()).setValue(this);
     }
 
     public QuestValidator getValidator() {
@@ -28,7 +28,7 @@ public class NFCQuest extends Quest {
 
     public void setValidator(QuestValidator validator) {
         this.validator = validator;
-        Global.mRoot.child("quests").child(super.getQuestId()).setValue(this);
+        Global.mRoot.child("rootDB").child(super.getQuestId()).setValue(this);
     }
 
     public List<String> getNfcID() {
@@ -37,6 +37,6 @@ public class NFCQuest extends Quest {
 
     public void setNfcID(List<String> nfcID) {
         this.nfcID = nfcID;
-        Global.mRoot.child("quests").child(super.getQuestId()).setValue(this);
+        Global.mRoot.child("rootDB").child(super.getQuestId()).setValue(this);
     }
 }

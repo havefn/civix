@@ -22,7 +22,7 @@ public class Dummyu extends AppCompatActivity {
         setContentView(R.layout.activity_dummyu);
         text = (TextView) findViewById(R.id.a12);
         DatabaseReference mRoot = FirebaseDatabase.getInstance().getReference();
-        final DatabaseReference mA12 = mRoot.child("wkwk").getRef();
+        final DatabaseReference mA12 = Global.mRoot.child("wkwk").getRef();
          mA12.addValueEventListener(new ValueEventListener() {
              @Override
              public void onDataChange(DataSnapshot dataSnapshot) {
