@@ -3,15 +3,19 @@
     <item
         android:id="@+id/map_item"
         android:title="Maps"
+        android:icon="@drawable/ic_maps"
         />
     <item
         android:id="@+id/quest_item"
-        android:title="Quest" />
+        android:title="Quest"
+        android:icon="@drawable/civix_recent"/>
     <item
         android:id="@+id/userDashboard_item"
-        android:title="Dashboard" />
+        android:title="Dashboard"
+        android:icon="@drawable/civix_user"/>
     <item
         android:id="@+id/search_item"
-        android:title="Search" />
+        android:title="Search"
+        android:icon="@drawable/civix_search"/>
 
 </menu>
