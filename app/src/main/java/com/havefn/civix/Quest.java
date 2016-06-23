@@ -30,28 +30,8 @@ public class Quest {
 
     private static final String TAG = "QuestCreation";
 
-    public Quest(String creatorID, Location questLocation ,String title, String description, Date endDate, String imageID, String type) throws Exception {
-        this.title = title;
-        this.creatorID = creatorID;
-        this.questLocation = questLocation;
-        Calendar c = Calendar.getInstance();
-        createdDate = c.getTime();
-        this.imageID = imageID;
-        this.endDate = endDate;
-        this.description = description;
-        this.progressionType = type;
-        Global.mRoot.child("quests").child(questId).setValue(this);
-
-        if(isDateOK(endDate)){
-            this.endDate = endDate;
-        }else{
-            throw new Exception("currentDate > endDate");
-        }
-        Log.d(TAG,"Quest creation OK");
-        completedUser = new HashMap<String,Boolean>();
-    }
-
-    public Quest(String creatorID, Location questLocation ,String title, String description, String imageID, String type) throws Exception {
+    public Quest(String creatorID, Location questLocation , String title, String description, String imageID, String type, String questId) {
+        this.questId = questId;
         this.title = title;
         this.creatorID = creatorID;
         this.questLocation = questLocation;
@@ -64,32 +44,8 @@ public class Quest {
         completedUser = new HashMap<String,Boolean>();
         Global.mRoot.child("quests").child(questId).setValue(this);
     }
-
 
     public Quest(){}
-
-    public void setStatus(boolean in) throws Exception{
-        if(!isDateOK(endDate)){
-            throw new Exception("currentDate > endDate");
-        }else{
-            this.complete = in;
-        }
-        Global.mRoot.child("quests").child(questId).setValue(this);
-    }
-
-    public boolean getStatus(){
-        if(complete == false){
-            return false;
-        }else{
-            return isDateOK(endDate);
-        }
-    }
-
-    public static boolean isDateOK(Date in){
-        Calendar c = Calendar.getInstance();
-        Date currentDate = c.getTime();
-        return currentDate.compareTo(in) < 0;
-    }
 
     public String getCreatorID() {
         return creatorID;
@@ -190,16 +146,16 @@ public class Quest {
         Global.mRoot.child("quests").child(questId).setValue(this);
     }
 
-    public static String getTAG() {
-        return TAG;
-    }
-    //    public boolean userTryQuest(User user){
+//    public static String getTAG() {
+//        return TAG;
+//    }
+//        public boolean userTryQuest(User user){
 //        if(validator.succeed()){
 //            completedUser.put(user.id,true);
 //        }
 //       return validator.succeed();
 //    }
-//
+
 //    public boolean userTryQuest(User user, String in){
 //        if(validator.succeed(in)){
 //            completedUser.put(user.id,true);

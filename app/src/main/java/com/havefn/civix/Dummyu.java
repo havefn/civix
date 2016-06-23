@@ -14,58 +14,35 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Date;
+import java.util.Iterator;
 
 public class Dummyu extends AppCompatActivity {
     private static final String TAG = "DummyActivity";
-    Quests quests;
-
-
     public TextView text;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dummyu);
         text = (TextView) findViewById(R.id.a12);
+
+
+//        //create
 //
+//        Location bleh = new Location("ATLANTIS");
+//        bleh.setLongitude(100);
+//        bleh.setAltitude(200);
+//        bleh.setLatitude(300);
 //
-//        User haha = new User("wkwk", "aufajelek", "aufa@jelek.com");
+//        Quest aa = new Quest("CAK", bleh, "Lokasi Harta", "blehblehblehbleh", "imageid", "type", "quest4");
+
+//       //retrieve location
 //
-//        try {
-//            NFCQuest questjelek = new NFCQuest("wisnukeren", null, "jadi orang jelek", "aufa jadi orang jelek", null, null);
-//            questjelek.setTargetCount(5);
-//            QuestProgression apakek = new QuestProgression(null, 5, "wkwk", "wisnukeren");
-//            Intent intent = new Intent(this, NFCValidationActivity.class);
-//            intent.putExtra("currentUserId","wkwk");
-//            intent.putExtra("questId","wisnukeren");
-//            haha.getTakenQuests().put("wkwk", apakek);
-//            haha.updateDatabase();
-//            startActivity(intent);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-
-//        Quests questlist = new Quests();
-//        questlist.addQuest("haha", null);
-//        questlist.updateDatabase();
-
-        Location tempLoc = new Location("Aufa's");
-        tempLoc.setLatitude(255);
-        tempLoc.setAltitude(123);
-        tempLoc.setLongitude(761);
-
-
-        try {
-            Quest ckck = new Quest("1233334", tempLoc , "Lokasi Atlantis", "Dimensi lain!!!!", "12334", "RFID");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-//        Global.mRoot.getDatabase().getReference().child("quests").addListenerForSingleValueEvent(new ValueEventListener() {
+//        Global.mRoot.child("quests").child("quest4").addListenerForSingleValueEvent(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(DataSnapshot dataSnapshot) {
-//                quests = (Quests) dataSnapshot.getValue(Quests.class);
-//                Log.d(TAG, "" + quests.getQuests().get("haha"));
-//
+//                Quest aa = dataSnapshot.getValue(Quest.class);
+//                Log.d(TAG, aa.getQuestLocation().getProvider());
 //            }
 //
 //            @Override
@@ -73,5 +50,6 @@ public class Dummyu extends AppCompatActivity {
 //
 //            }
 //        });
-    }
+   }
 }
+

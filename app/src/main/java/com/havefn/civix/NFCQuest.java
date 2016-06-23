@@ -18,16 +18,8 @@ public class NFCQuest extends Quest {
     private List<String> nfcID;
     private int targetCount;
 
-    public NFCQuest(String creatorID, Location questLocation , String title, String description, Date endDate, String imageID, String type) throws Exception {
-        super(creatorID, questLocation , title, description, endDate, imageID, type);
-        ArrayList<String> nfcID = new ArrayList<String>();
-        DatabaseReference ref = Global.mRoot.child("quests").push();
-        super.setQuestId(ref.getKey());
-        Global.mRoot.child("quests").child(super.getQuestId()).setValue(this);
-    }
-
-    public NFCQuest(String creatorID, Location questLocation , String title, String description, String imageID, String type) throws Exception {
-        super(creatorID, questLocation , title, description, imageID, type);
+    public NFCQuest(String creatorID, Location questLocation , String title, String description, String imageID, String type, String questId) {
+        super(creatorID, questLocation , title, description, imageID, type, questId);
         ArrayList<String> nfcID = new ArrayList<String>();
 
         super.setQuestId(Global.mRoot.child("quests").push().getKey());
