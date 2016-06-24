@@ -3,6 +3,7 @@ package com.havefn.civix.Quest;
 import android.location.Location;
 
 import com.havefn.civix.Global;
+import com.havefn.civix.LocationFb;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -17,7 +18,7 @@ public class Quest {
     private String title;
     private String description;
     private String imageID;
-    private Location questLocation;
+    private LocationFb questLocation;
     private HashMap<String,Boolean> completedUser;
     private boolean complete;
     private Date createdDate;
@@ -27,7 +28,7 @@ public class Quest {
 
     private static final String TAG = "QuestCreation";
 
-    public Quest(String creatorID, Location questLocation , String title, String description, String imageID, String type, String questId) {
+    public Quest(String creatorID, LocationFb questLocation , String title, String description, String imageID, String type, String questId) {
         this.questId = questId;
         this.title = title;
         this.creatorID = creatorID;
@@ -84,7 +85,7 @@ public class Quest {
         return questLocation;
     }
 
-    public void setQuestLocation(Location questLocation) {
+    public void setQuestLocation(LocationFb questLocation) {
         this.questLocation = questLocation;
         Global.mRoot.child("quests").child(questId).setValue(this);
     }
