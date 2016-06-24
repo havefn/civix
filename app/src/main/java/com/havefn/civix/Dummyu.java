@@ -12,6 +12,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.havefn.civix.Quest.Quest;
 
 import java.util.Date;
 import java.util.Iterator;
@@ -25,6 +26,31 @@ public class Dummyu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dummyu);
         text = (TextView) findViewById(R.id.a12);
+
+       //new Location get test using LocationFb
+
+        //create
+
+        LocationFb test = new LocationFb();
+        test.setLongitude(100);
+        test.setAltitude(200);
+        test.setLatitude(300);
+        Quest aa = new Quest("CAK", test, "Lokasi Harta", "blehblehblehbleh", "imageid", "type", "quest4");
+
+        //retrieve location
+
+        Global.mRoot.child("quests").child("quest4").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Quest aa = dataSnapshot.getValue(Quest.class);
+                Log.d(TAG, aa.getQuestLocation().getProvider());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
 //        //create

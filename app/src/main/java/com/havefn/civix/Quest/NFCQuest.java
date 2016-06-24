@@ -3,6 +3,7 @@ package com.havefn.civix.Quest;
 import android.location.Location;
 
 import com.havefn.civix.Global;
+import com.havefn.civix.LocationFb;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ public class NFCQuest extends Quest {
     private List<String> nfcID;
     private int targetCount;
 
-    public NFCQuest(String creatorID, Location questLocation , String title, String description, String imageID, String type, String questId) {
+    public NFCQuest(String creatorID, LocationFb questLocation , String title, String description, String imageID, String type, String questId) {
         super(creatorID, questLocation , title, description, imageID, type, questId);
         ArrayList<String> nfcID = new ArrayList<String>();
 
