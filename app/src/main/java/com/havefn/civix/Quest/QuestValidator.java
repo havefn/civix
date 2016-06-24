@@ -1,4 +1,4 @@
-package com.havefn.civix;
+package com.havefn.civix.Quest;
 
 /**
  * Created by aufa on 18/06/2016.

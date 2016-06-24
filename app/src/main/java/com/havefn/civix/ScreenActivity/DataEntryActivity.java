@@ -1,4 +1,4 @@
-package com.havefn.civix;
+package com.havefn.civix.ScreenActivity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.havefn.civix.R;
 
 
 public class DataEntryActivity extends AppCompatActivity {

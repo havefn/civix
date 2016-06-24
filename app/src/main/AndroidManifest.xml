@@ -9,17 +9,17 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StartingActivity">
+        <activity android:name=".ScreenActivity.StartingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegistrationActivity" />
-        <activity android:name=".DataEntryActivity" />
-        <activity android:name=".MainMenuActivity" />
+        <activity android:name=".ScreenActivity.LoginActivity" />
+        <activity android:name=".ScreenActivity.RegistrationActivity" />
+        <activity android:name=".ScreenActivity.DataEntryActivity" />
+        <activity android:name=".ScreenActivity.MainMenuActivity" />
         <activity
             android:name=".Dummyu"
             android:exported="true" />
@@ -28,7 +28,7 @@
         <uses-permission android:name="android.permission.NFC" />
         <uses-sdk android:minSdkVersion="14" />
         <uses-feature android:name="android.hardware.nfc" android:required="false"/>
-        <activity android:name=".NFCValidationActivity"></activity>
+        <activity android:name=".ScreenActivity.NFCValidationActivity"></activity>
     </application>
 
 </manifest>

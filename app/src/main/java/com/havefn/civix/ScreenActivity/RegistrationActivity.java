@@ -1,4 +1,4 @@
-package com.havefn.civix;
+package com.havefn.civix.ScreenActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,14 +10,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ThrowOnExtraProperties;
+import com.havefn.civix.R;
 
 /**
  * Created by Cak on 18/06/2016.

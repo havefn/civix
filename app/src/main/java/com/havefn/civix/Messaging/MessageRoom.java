@@ -1,4 +1,4 @@
-package com.havefn.civix;
+package com.havefn.civix.Messaging;
 
 import java.util.ArrayList;
 import java.util.HashMap;

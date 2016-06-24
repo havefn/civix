@@ -1,15 +1,12 @@
-package com.havefn.civix;
+package com.havefn.civix.Quest;
 
 import android.location.Location;
-import android.util.Log;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import com.havefn.civix.Global;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by aufa on 18/06/2016.

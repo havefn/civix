@@ -1,7 +1,10 @@
-package com.havefn.civix;
+package com.havefn.civix.User;
 
 
 import android.net.Uri;
+
+import com.havefn.civix.Global;
+import com.havefn.civix.Quest.QuestProgression;
 
 import java.util.ArrayList;
 import java.util.Calendar;

@@ -1,4 +1,4 @@
-package com.havefn.civix;
+package com.havefn.civix.ScreenActivity;
 
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -11,8 +11,13 @@ import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.havefn.civix.Global;
+import com.havefn.civix.Quest.NFCQuest;
+import com.havefn.civix.Quest.Quest;
+import com.havefn.civix.Quest.QuestProgression;
+import com.havefn.civix.R;
+import com.havefn.civix.User.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;

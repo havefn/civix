@@ -1,4 +1,4 @@
-package com.havefn.civix;
+package com.havefn.civix.Quest;
 
 import java.util.ArrayList;
 import java.util.List;

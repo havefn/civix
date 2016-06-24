@@ -1,8 +1,8 @@
-package com.havefn.civix;
+package com.havefn.civix.Quest;
 
-import java.util.ArrayList;
+import com.havefn.civix.Global;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**

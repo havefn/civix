@@ -1,4 +1,4 @@
-package com.havefn.civix;
+package com.havefn.civix.Quest;
 
 import android.app.IntentService;
 import android.content.Intent;

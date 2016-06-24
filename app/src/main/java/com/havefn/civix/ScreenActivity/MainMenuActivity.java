@@ -1,4 +1,4 @@
-package com.havefn.civix;
+package com.havefn.civix.ScreenActivity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.havefn.civix.R;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabSelectedListener;
 

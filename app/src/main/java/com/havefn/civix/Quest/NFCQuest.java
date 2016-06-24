@@ -1,12 +1,10 @@
-package com.havefn.civix;
+package com.havefn.civix.Quest;
 
 import android.location.Location;
-import android.util.Log;
 
-import com.google.firebase.database.DatabaseReference;
+import com.havefn.civix.Global;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
